@@ -50,6 +50,11 @@ public class CacheConfiguration {
             createCache(cm, fr.soheilb.projet.domain.User.class.getName());
             createCache(cm, fr.soheilb.projet.domain.Authority.class.getName());
             createCache(cm, fr.soheilb.projet.domain.User.class.getName() + ".authorities");
+            createCache(cm, fr.soheilb.projet.domain.Ville.class.getName());
+            createCache(cm, fr.soheilb.projet.domain.Ville.class.getName() + ".joueurs");
+            createCache(cm, fr.soheilb.projet.domain.Region.class.getName());
+            createCache(cm, fr.soheilb.projet.domain.Region.class.getName() + ".villes");
+            createCache(cm, fr.soheilb.projet.domain.Joueur.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,31 @@
+{
+  "annotations": {
+    "changelogDate": "20241125134211"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codePostal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nbHabitants",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Ville",
+  "relationships": [
+    {
+      "otherEntityName": "joueur",
+      "relationshipName": "joueurs",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

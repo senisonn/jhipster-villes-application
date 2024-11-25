@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (joueur(); as joueurRef) {
+      <div>
+        <h2 data-cy="joueurDetailsHeading"><span jhiTranslate="jhipsterVillesApplicationApp.joueur.detail.title">Joueur</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ joueurRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterVillesApplicationApp.joueur.pseudo">Pseudo</span></dt>
+          <dd>
+            <span>{{ joueurRef.pseudo }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterVillesApplicationApp.joueur.motDePasse">Mot De Passe</span></dt>
+          <dd>
+            <span>{{ joueurRef.motDePasse }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterVillesApplicationApp.joueur.dateInscription">Date Inscription</span></dt>
+          <dd>
+            <span>{{ joueurRef.dateInscription | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterVillesApplicationApp.joueur.estAdministrateur">Est Administrateur</span></dt>
+          <dd>
+            <span>{{ joueurRef.estAdministrateur }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterVillesApplicationApp.joueur.ville">Ville</span></dt>
+          <dd>
+            @if (joueur()!.ville) {
+              <div>
+                <a [routerLink]="['/ville', joueur()!.ville?.id, 'view']">{{ joueurRef.ville?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/joueur', joueurRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
