@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ville-heading"
+        data-cy="VilleCreateUpdateHeading"
+        jhiTranslate="jhipsterVillesApplicationApp.ville.home.createOrEditLabel"
+      >
+        Create or edit a Ville
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="jhipsterVillesApplicationApp.ville.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nom" jhiTranslate="jhipsterVillesApplicationApp.ville.nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codePostal" jhiTranslate="jhipsterVillesApplicationApp.ville.codePostal">Code Postal</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codePostal"
+            id="field_codePostal"
+            data-cy="codePostal"
+            formControlName="codePostal"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nbHabitants" jhiTranslate="jhipsterVillesApplicationApp.ville.nbHabitants"
+            >Nb Habitants</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nbHabitants"
+            id="field_nbHabitants"
+            data-cy="nbHabitants"
+            formControlName="nbHabitants"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_region" jhiTranslate="jhipsterVillesApplicationApp.ville.region">Region</label>
+          <select
+            class="form-control"
+            id="field_region"
+            data-cy="region"
+            name="region"
+            formControlName="region"
+            [compareWith]="compareRegion"
+          >
+            <option [ngValue]="null"></option>
+            @for (regionOption of regionsSharedCollection; track $index) {
+              <option [ngValue]="regionOption">{{ regionOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

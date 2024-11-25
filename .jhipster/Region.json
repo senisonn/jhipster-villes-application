@@ -1,0 +1,23 @@
+{
+  "annotations": {
+    "changelogDate": "20241125134212"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Region",
+  "relationships": [
+    {
+      "otherEntityName": "ville",
+      "relationshipName": "villes",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
