@@ -1,0 +1,26 @@
+entity Ville {
+nom String
+codePostal String
+nbHabitants Integer
+}
+
+entity Region {
+nom String
+}
+
+entity Joueur {
+pseudo String
+motDePasse String
+dateInscription Instant
+estAdministrateur Boolean
+}
+
+relationship OneToMany {
+ Ville{joueurs} to Joueur
+}
+
+relationship OneToMany {
+ Region{villes} to Ville
+}
+
+service Region, Ville, Joueur with serviceImpl
